@@ -1,3 +1,15 @@
 spring:
   application:
     name: paideia-backend
+  docker:
+    compose:
+      file: classpath:/compose.yaml
+  #logging:
+  #  level:
+  #    org.springframework.security: TRACE
+  server:
+    servlet:
+      session:
+        persistent: true
+    port: 8080
+    address: 127.0.0.1
