@@ -7,6 +7,11 @@ spring:
   #logging:
   #  level:
   #    org.springframework.security: TRACE
+  jpa:
+    show-sql: true
+    hibernate:
+      # TODO change before merging
+      ddl-auto: create-drop
   server:
     servlet:
       session:
