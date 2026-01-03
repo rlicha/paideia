@@ -1,4 +1,4 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "resources")
-public class Resources {
+public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,12 +36,15 @@ public class Resources {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<GroupResources> groupResources;
+    private List<GroupResource> groupResources;
 
     @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserReadings> userReadings;
+    private List<UserReading> userReadings;
 
     public enum ResourceType {
         BOOK, ARTICLE, BLOG
+    }
+
+    public Resource() {
     }
 }

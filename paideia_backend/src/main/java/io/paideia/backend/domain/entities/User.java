@@ -1,4 +1,4 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 
 import jakarta.persistence.*;
@@ -6,19 +6,18 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-public final class Users {
+@Table(name = "users")
+public final class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Email
     @NotEmpty
     @Column(name = "email", unique = true, nullable = false, length = 255)
     private String email;
@@ -36,12 +35,19 @@ public final class Users {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReadingGroups> ownedGroups;
+    private List<ReadingGroup> ownedGroups;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<GroupMembers> memberships;
+    private List<GroupMember> memberships;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserReadings> readings;
+    private List<UserReading> readings;
 
+    public User() {}
+
+    public User(String username, String hashedPassword, String email) {
+        this.username = username;
+        this.passwordHash = hashedPassword;
+        this.email = email;
+    }
 }

@@ -1,4 +1,4 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,7 +16,7 @@ public class ReadingProgress {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_reading_id", nullable = false)
-    private UserReadings userReading;
+    private UserReading userReading;
 
     @Column(name = "progress_pct", nullable = false)
     private Integer progressPct;
@@ -27,4 +27,7 @@ public class ReadingProgress {
     @CreationTimestamp
     @Column(name = "reported_at", nullable = false, updatable = false)
     private LocalDateTime reportedAt;
+
+    public ReadingProgress() {
+    }
 }

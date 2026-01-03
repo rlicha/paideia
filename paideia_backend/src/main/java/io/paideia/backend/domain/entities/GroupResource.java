@@ -1,4 +1,4 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "group_resources")
-public class GroupResources {
+public class GroupResource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -16,13 +16,16 @@ public class GroupResources {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "group_id", nullable = false)
-    private ReadingGroups group;
+    private ReadingGroup group;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "resource_id", nullable = false)
-    private Resources resource;
+    private Resource resource;
 
     @CreationTimestamp
     @Column(name = "added_at", nullable = false, updatable = false)
     private LocalDateTime addedAt;
+
+    public GroupResource() {
+    }
 }

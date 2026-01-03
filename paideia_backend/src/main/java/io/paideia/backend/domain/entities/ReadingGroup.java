@@ -1,16 +1,15 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "reading_groups")
-public class ReadingGroups {
+public class ReadingGroup {
 
     @Id
     @GeneratedValue
@@ -25,7 +24,7 @@ public class ReadingGroups {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="owner_id", nullable = false)
-    private Users owner;
+    private User owner;
 
     @Column(name = "target_date")
     private LocalDate targetDate;
@@ -37,4 +36,6 @@ public class ReadingGroups {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    public ReadingGroup() {
+    }
 }

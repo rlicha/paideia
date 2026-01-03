@@ -1,4 +1,4 @@
-package io.paideia.backend.entities;
+package io.paideia.backend.domain.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "group_members")
-public class GroupMembers {
+public class GroupMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -16,11 +16,11 @@ public class GroupMembers {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "group_id", nullable = false)
-    private ReadingGroups group;
+    private ReadingGroup group;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
+    private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
@@ -32,5 +32,8 @@ public class GroupMembers {
 
     public enum Role {
         MEMBER, ADMIN
+    }
+
+    public GroupMember() {
     }
 }
