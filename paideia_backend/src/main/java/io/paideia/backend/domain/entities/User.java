@@ -2,7 +2,6 @@ package io.paideia.backend.domain.entities;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -43,11 +42,16 @@ public final class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserReading> readings;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String hashedPassword, String email) {
         this.username = username;
         this.passwordHash = hashedPassword;
         this.email = email;
+    }
+
+    public String getUsername() {
+        return this.username;
     }
 }

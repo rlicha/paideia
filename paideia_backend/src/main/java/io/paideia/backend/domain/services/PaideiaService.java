@@ -5,9 +5,11 @@ import io.paideia.backend.domain.entities.User;
 import io.paideia.backend.domain.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PaideiaService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public PaideiaService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -17,5 +19,7 @@ public class PaideiaService {
         return userRepository.save(new User(username, hashedPassword, email));
     }
 
-
+    public Optional<User> getUser(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
