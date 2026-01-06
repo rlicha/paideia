@@ -1,8 +1,8 @@
-package io.paideia.backend.api;
+package io.paideia.backend.controller;
 
 
-import io.paideia.backend.domain.entities.User;
-import io.paideia.backend.domain.services.PaideiaService;
+import io.paideia.backend.entities.User;
+import io.paideia.backend.services.PaideiaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

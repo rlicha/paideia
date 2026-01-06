@@ -1,6 +1,6 @@
-package io.paideia.backend.domain.repositories;
+package io.paideia.backend.repositories;
 
-import io.paideia.backend.domain.entities.User;
+import io.paideia.backend.entities.User;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.Optional;

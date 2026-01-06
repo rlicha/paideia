@@ -1,8 +1,8 @@
-package io.paideia.backend.domain.services;
+package io.paideia.backend.services;
 
 
-import io.paideia.backend.domain.entities.User;
-import io.paideia.backend.domain.repositories.UserRepository;
+import io.paideia.backend.entities.User;
+import io.paideia.backend.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

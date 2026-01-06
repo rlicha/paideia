@@ -1,4 +1,4 @@
-package io.paideia.backend.domain.entities;
+package io.paideia.backend.entities;
 
 
 import jakarta.persistence.*;
