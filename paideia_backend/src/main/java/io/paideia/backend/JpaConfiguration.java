@@ -1,11 +1,10 @@
-package io.paideia.backend.config;
+package io.paideia.backend;
 
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "io.paideaia.backend")
+@EnableJpaRepositories
 public class JpaConfiguration {
-
 }

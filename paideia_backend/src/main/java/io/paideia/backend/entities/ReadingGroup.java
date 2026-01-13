@@ -24,7 +24,7 @@ public class ReadingGroup {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
-    private User owner;
+    private UserEntity owner;
 
     @Column(name = "target_date")
     private LocalDate targetDate;

@@ -2,6 +2,7 @@ package io.paideia.backend.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -11,12 +12,13 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-public final class User {
+public final class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Email
     @NotEmpty
     @Column(name = "email", unique = true, nullable = false, length = 255)
     private String email;
@@ -42,10 +44,10 @@ public final class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserReading> readings;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(String username, String hashedPassword, String email) {
+    public UserEntity(String username, String hashedPassword, String email) {
         this.username = username;
         this.passwordHash = hashedPassword;
         this.email = email;
@@ -53,5 +55,9 @@ public final class User {
 
     public String getUsername() {
         return this.username;
+    }
+
+    public String getPasswordHash() {
+        return this.passwordHash;
     }
 }

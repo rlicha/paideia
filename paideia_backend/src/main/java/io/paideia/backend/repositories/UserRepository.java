@@ -1,12 +1,15 @@
 package io.paideia.backend.repositories;
 
-import io.paideia.backend.entities.User;
+import io.paideia.backend.entities.UserEntity;
 import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UserRepository extends ListCrudRepository<User, UUID> {
+@Repository
+public interface UserRepository extends ListCrudRepository<UserEntity, UUID> {
 
-    Optional<User> findByUsername(String username);
+    Optional<UserEntity> findByUsername(String username);
+
 }
